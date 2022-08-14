@@ -1,4 +1,4 @@
-# Trabalho De Engenharia De Software
+# Trabalho de Engenharia de Software
 
 ## Sobre
 
