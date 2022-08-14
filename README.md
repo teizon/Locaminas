@@ -2,7 +2,7 @@
 
 ## Sobre
 
-O objetivo do nosso projeto final é criar um software para uma locadora de carros, de modo que, ela se tornará mais agil.Esse software terá funções de cadastrar carros e clientes, listar carros e clientes e aluguel de carro.
+O objetivo do nosso projeto final é criar um software para uma locadora de carros, de modo que, ela se tornará mais agil. Esse software terá funções como cadastrar carros e clientes, listar carros e clientes e aluguel de carro.
 
  ## Tecnologias
 ```
