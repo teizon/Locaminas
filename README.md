@@ -9,7 +9,7 @@ O objetivo do nosso projeto final é criar um software para uma locadora de carr
 <li>CSS3</li>
 <li>Javascript</li>
 <li>Bootstrap Studio 5</li>
-<li>XAMPP 3.3.0</li>
+<li>XAMPP 8.1.5</li>
 <li>Apache 2.4.53</li>
 <li>PHP 8.1.5</li>
 <li>MySQL Workbench 8.0.28</li>
