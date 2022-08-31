@@ -7,6 +7,8 @@ O objetivo do nosso projeto final é criar um software para uma locadora de carr
 ## Tecnologias
 <li>HTML5</li>
 <li>CSS3</li>
+<li>Javascript</li>
+<li>Bootstrap Studio 5</li>
 <li>XAMPP 3.3.0</li>
 <li>Apache 2.4.53</li>
 <li>PHP 8.1.5</li>
