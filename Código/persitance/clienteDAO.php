@@ -50,42 +50,4 @@ class ClienteDAO
             window.location.href = "../view/ListaCliente.php"</script>';
         }
     }
-
-    /* Função de editar um cliente */
-    function editarCliente($cliente, $id, $conn){
-        $nome = $cliente->getNome();
-        $cpf = $cliente->getCPF();
-        $cnh = $cliente->getCNH();
-        $telefone = $cliente->getTelefone();
-        $email = $cliente->getEmail();
-
-        $busca = mysqli_query($conn, "SELECT * FROM cliente WHERE cpf='$cpf' and id='$id'");
-        $count = mysqli_num_rows($busca);
-
-        if ($count === 1){
-            $sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ";
-            if ($conn->query($sql) === true) {
-                echo '<script>alert("Editado com sucesso");
-                window.location.href = "../view/ListaCliente.php"</script>';
-            }
-        } else if($count === 0) {
-            $busca = mysqli_query($conn, "SELECT * FROM cliente WHERE cpf='$cpf'");
-            $count = mysqli_num_rows($busca);
-            if($count == 0){
-                $sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ";
-
-                if ($conn->query($sql) === true) {
-                echo '<script>alert("Editado com sucesso");
-                window.location.href = "../view/ListaCliente.php"</script>';
-                }
-            } else {
-                echo '<script>alert("CPF ja existente");
-                window.location.href = "../view/ListaCliente.php"</script>';
-            }
-        } else {
-            echo '<script>alert("Erro ao editar");
-            window.location.href = "../view/ListaCliente.php"</script>';
-        }
-        
-    }
 }
