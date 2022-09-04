@@ -13,6 +13,8 @@ O objetivo do nosso projeto final é criar um software para uma locadora de carr
 <li>Apache 2.4.53</li>
 <li>PHP 8.1.5</li>
 <li>MySQL Workbench 8.0.28</li>
+<li>MySQL Server 8.0.28</li>
+
 
 ## Prototipação
 <li><a href="https://www.figma.com/file/nO9I8ECjjxtGEN7XWKMiE1/Projeto-Final?node-id=0%3A1">Figma</a></li>
