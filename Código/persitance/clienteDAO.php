@@ -27,4 +27,14 @@ class ClienteDAO
             window.location.href = "../view/CadastroCliente.html"</script>';
         }
     }
+
+
+    /* Função de listar todos clientes */
+    function listarCliente($conn)
+    {
+        $sql = "SELECT * FROM cliente ORDER BY nome ASC";
+        $listar = $conn->query($sql);
+        return $listar;
+    }
+
 }
