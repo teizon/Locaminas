@@ -4,11 +4,11 @@ include_once "../persitance/conexao.php";
 include_once "../model/cliente.php";
 include_once "../persitance/clienteDAO.php";
 
-$nome = $_POST['cName'];
-$cpf = $_POST['cCPF'];
-$cnh = $_POST['cCNH'];
-$telefone = $_POST['cTelefone'];
-$email = $_POST['cEmail'];
+$nome = $_POST['nome'];
+$cpf = $_POST['cpf'];
+$cnh = $_POST['cnh'];
+$telefone = $_POST['telefone'];
+$email = $_POST['email'];
 
 $conexao = new Conexao();
 $conexao = $conexao->getConexao();
