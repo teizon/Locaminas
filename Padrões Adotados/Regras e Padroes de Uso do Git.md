@@ -81,5 +81,5 @@ dois pontos e a palavra chave dele, nem no começo nem no final, como por exempl
 ## Definições de Pastas:
 
 ````
-O projeto terá apenas duas pastas principais, uma de documentos e outra de codificação
+O projeto terá três pastas principais, uma de requisitos, uma de padrões adotados e outra de código
 ````
