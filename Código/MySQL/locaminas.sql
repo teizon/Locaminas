@@ -26,7 +26,5 @@ INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Test','123.12
 INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Tes','123.123.123-72','11111111111','35-9999-8888','victor@ufla');
 INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Te','123.123.123-82','11111111111','35-9999-8888','victor@ufla');
 INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('T','123.123.123-92','11111111111','35-9999-8888','victor@ufla');
-INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Ana Clara','123.123.123-93','11111111111','35-9999-8888','victor@ufla');
-INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Ana Clar','123.123.123-14','11111111111','35-9999-8888','victor@ufla');
-INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Ana Cl','123.123.123-15','11111111111','35-9999-8888','victor@ufla');
-INSERT INTO locaminas.cliente(nome,cpf,cnh,telefone,email) values('Ana','123.123.123-16','11111111111','35-9999-8888','victor@ufla');
+
+SELECT * FROM locaminas.cliente;
