@@ -36,7 +36,11 @@
       src="assets/img/locaminas.png"
       style="margin-top: 10px; margin-bottom: 30px"
     />
-    <form autocomplete="off">
+    <form
+      action="controller/Conta/ValidarUsuario.php"
+      method="post"
+      autocomplete="off"
+    >
       <input
         class="form-control"
         type="text"
@@ -50,7 +54,7 @@
           margin: 10px;
         "
         placeholder="Usuário"
-        name="cUsuario"
+        name="usuario"
       /><input
         class="form-control"
         type="password"
@@ -65,10 +69,10 @@
           text-align: left;
         "
         placeholder="Senha"
-        name="cSenha"
-      /><a
+        name="senha"
+      /><button
         class="btn btn-primary text-center"
-        role="button"
+        type="submit"
         style="
           width: 309px;
           height: 54px;
@@ -81,9 +85,9 @@
           border: 4px solid rgb(255, 255, 255);
           margin: 10px;
         "
-        href="view/home.html"
-        >ENTRAR</a
       >
+        ENTRAR
+      </button>
     </form>
     <a href="#" style="color: rgb(206, 226, 255); font-size: 18px; margin: 10px"
       >Esqueci minha senha</a

@@ -1,3 +1,4 @@
 *.txt
 *.jpeg
 *.lock
+*node_modules
