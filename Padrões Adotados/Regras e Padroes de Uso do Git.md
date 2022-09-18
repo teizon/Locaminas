@@ -74,7 +74,7 @@ dois pontos e a palavra chave dele, nem no começo nem no final, como por exempl
 | git commit -m ": bub : fix: Arrumar cadastro de carros" |  🐛 fix: Arrumar cadastro de carros |
  
 ````
-observação: Assim como, mencionado assima, após a primeira aspas nao tem espaço entre os 
+observação: Assim como, mencionado acima, após a primeira aspas nao tem espaço entre os 
 dois pontos e a palavra chave dele, nem no começo nem no final, como por exemplo :books:
 ````
 
