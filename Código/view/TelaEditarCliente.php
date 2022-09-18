@@ -86,7 +86,7 @@ $cliente = mysqli_fetch_array($query_run);
     >
       <div style="width: 520px">
         <form
-          action="../controller/EditarCliente.php"
+          action="../controller/Cliente/EditarCliente.php"
           method="post"
           autocomplete="off"
         >

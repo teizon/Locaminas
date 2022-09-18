@@ -1,3 +1,19 @@
+<?php
+include_once "../persitance/conexao.php";
+include_once "../model/carro.php";
+include_once "../persitance/carroDAO.php";
+
+$conexao = new Conexao();
+$conexao = $conexao->getConexao();
+
+$id = mysqli_real_escape_string($conexao, $_GET['id']);
+$query = "SELECT * FROM carro WHERE id='$id'";
+$query_run = mysqli_query($conexao, $query);
+$carro = mysqli_fetch_array($query_run);
+?>
+
+
+
 <!DOCTYPE html>
 <html
   lang="en"
@@ -16,7 +32,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Tela Cadastro</title>
+    <title>Tela Editar</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css" />
     <link rel="stylesheet" href="../assets/css/styles.css" />
@@ -51,7 +67,7 @@
         />
       </div>
       <div>
-        <a href="TelaCliente.html"
+        <a href="ListaVeiculo.php"
           ><i
             class="fas fa-arrow-left"
             style="
@@ -70,29 +86,17 @@
     >
       <div style="width: 520px">
         <form
-          action="../controller/Cliente/CadastroCliente.php"
+          action="../controller/Carro/EditarCarro.php"
           method="post"
           autocomplete="off"
         >
           <input
-            class="form-control"
-            type="text"
-            style="
-              width: 500px;
-              height: 54px;
-              border-style: none;
-              border-radius: 50px;
-              font-size: 22px;
-              padding: 6px 20px;
-              margin: 10px;
-            "
-            placeholder="Usuário"
-            name="nome"
-            required=""
+            type="hidden"
+            name="id"
+            value="<?= $carro['id']; ?>"
           />
           <input
             class="form-control"
-            data-mask="000.000.000-00"
             type="text"
             style="
               width: 500px;
@@ -103,11 +107,10 @@
               padding: 6px 20px;
               margin: 10px;
             "
-            placeholder="CPF"
-            name="cpf"
+            placeholder="Nome"
+            name="nomeVeiculo"
+            value="<?= $carro['nomeVeiculo']; ?>"
             required=""
-            pattern="[0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2}"
-            title="111.222.333-44"
           /><input
             class="form-control"
             type="text"
@@ -120,16 +123,15 @@
               padding: 6px 20px;
               margin: 10px;
             "
-            placeholder="CNH"
-            name="cnh"
+            placeholder="Placa"
+            name="placa"
+            value="<?= $carro['placa']; ?>"
+            pattern="[A-Z]{3}[-][0-9]{4}"
+            title="ABC-1234"
             required=""
-            minlength="11"
-            maxlength="11"
-            title="11 Números"
-          /><input
-            class="form-control"
-            data-mask="00-0000-0000"
-            type="tel"
+          /><select
+            class="form-select"
+            type="text"
             style="
               width: 500px;
               height: 54px;
@@ -139,14 +141,19 @@
               padding: 6px 20px;
               margin: 10px;
             "
-            placeholder="Telefone"
-            name="telefone"
+            placeholder="Combustivel"
+            name="combustivel"
+            value="<?= $carro['combustivel']; ?>"
             required=""
-            pattern="[0-9]{2}[-][0-9]{4}[-][0-9]{4}"
-            title="35-9999-8888"
+            >
+            <option value="Diesel">Diesel</option>
+            <option value="Gasolina">Gasolina</option>
+            <option value="Etanol">Etanol</option>
+            <option value="Flex">Flex</option>
+            <option value="Eletrico">Eletrico</option>
           /><input
             class="form-control"
-            type="email"
+            type="text"
             style="
               width: 500px;
               height: 54px;
@@ -156,11 +163,47 @@
               padding: 6px 20px;
               margin: 10px;
             "
-            placeholder="Email"
-            name="email"
+            placeholder="Cor"
+            name="cor"
+            value="<?= $carro['cor']; ?>"
+            required=""
+          /><input
+            class="form-control"
+            type="number"
+            style="
+              width: 500px;
+              height: 54px;
+              border-style: none;
+              border-radius: 50px;
+              font-size: 22px;
+              padding: 6px 20px;
+              margin: 10px;
+            "
+            placeholder="Ano"
+            name="ano"
+            min="1985"
+            max="2025"
+            value="<?= $carro['ano']; ?>"
+            required=""
+          /><input
+            class="form-control"
+            type="number"
+            style="
+              width: 500px;
+              height: 54px;
+              border-style: none;
+              border-radius: 50px;
+              font-size: 22px;
+              padding: 6px 20px;
+              margin: 10px;
+            "
+            placeholder="Valor"
+            name="valor"
+            step="0.01"
+            value="<?= $carro['valor']; ?>"
             required=""
           />
-          <div class="d-flex">
+          <div class="d-flex flex-row justify-content-center">
             <button
               class="btn btn-primary text-center"
               type="submit"
@@ -176,33 +219,12 @@
                 border: 4px solid rgb(255, 255, 255);
                 margin: 10px;
               "
-            >
-              CADASTRAR</button
-            ><button
-              class="btn btn-primary text-center"
-              type="reset"
-              style="
-                width: 260px;
-                height: 54px;
-                border-radius: 50px;
-                background: rgba(255, 255, 255, 0);
-                color: rgb(255, 255, 255);
-                font-size: 22px;
-                text-align: left;
-                padding: 6px 20px;
-                border: 4px solid rgb(255, 255, 255);
-                margin: 10px;
-              "
-            >
-              LIMPAR
-            </button>
+            >EDITAR</button>
           </div>
         </form>
       </div>
-      <img src="../assets/img/user1.png" style="width: 400px" />
+      <img src="../assets/img/jeep.png" style="width: 400px" />
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   </body>
 </html>

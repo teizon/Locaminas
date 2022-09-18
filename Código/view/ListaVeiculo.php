@@ -1,13 +1,13 @@
 <?php
 
 include_once "../persitance/conexao.php";
-include_once "../persitance/clienteDAO.php";
+include_once "../persitance/carroDAO.php";
 
 $conexao = new Conexao();
 $conexao = $conexao->getConexao();
 
-$clientedao = new ClienteDAO();
-$resultado = $clientedao->listarCliente($conexao);
+$carroDao = new carroDAO();
+$resultado = $carroDao->listarCarro($conexao);
 
 ?>
 
@@ -43,7 +43,7 @@ $resultado = $clientedao->listarCliente($conexao);
       <img src="../assets/img/locaminas.png" style="margin-top: 20px; margin-left: 20px; margin-bottom: 20px" />
     </div>
     <div>
-      <a href="../view/TelaCliente.html">
+      <a href="../view/TelaVeiculo.html">
         <i class="fas fa-arrow-left" style=" color: rgb(255, 255, 255); font-size: 3rem; text-align: center; padding: 35px;"></i>
       </a>
     </div>
@@ -54,29 +54,32 @@ $resultado = $clientedao->listarCliente($conexao);
       <table class="table table-bordered" id="myTable">
         <thead style="width:100% ;">
           <tr>
-            <th style="width: 25%;">Nome</th>
-            <th style="width: 15%;">CPF</th>
-            <th style="width: 15%;">CNH</th>
-            <th style="width: 15%;">Telefone</th>
-            <th style="width: 15%;">Email</th>
+            <th style="width: 20%;">Nome</th>
+            <th style="width: 13%;">Placa</th>
+            <th style="width: 13%;">Combustivel</th>
+            <th style="width: 13%;">Cor</th>
+            <th style="width: 13%;">Ano</th>
+            <th style="width: 13%;">Valor</th>
             <th style="width: 15%;">Ações</th>
           </tr>
         </thead>
         <tbody>
           <?php
           if (mysqli_num_rows($resultado)) {
-            foreach ($resultado as $cliente) {
+            foreach ($resultado as $carro) {
           ?>
               <tr>
-                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $cliente['nome']; ?></td>
-                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $cliente['cpf']; ?></td>
-                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $cliente['cnh']; ?></td>
-                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $cliente['telefone']; ?></td>
-                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $cliente['email']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['nomeVeiculo']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['placa']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['combustivel']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['cor']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['ano']; ?></td>
+                <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;"><?= $carro['valor']; ?></td>
                 <td style="color: var(--bs-table-active-color);font-size: 20px;font-weight: bold;">
-                  <a href="../view/TelaEditarCliente.php?id=<?= $cliente['id']; ?>" class="btn btn-success btn-sm">Editar</a>
-                  <form action="../controller/Cliente/ExcluirCliente.php" method="POST" class="d-inline">
-                    <button type="submit" name="delete_cliente" value="<?= $cliente['id']; ?>" class="btn btn-danger btn-sm">Deletar</button>
+                  <a href="../controller/Aluguel/ValidaAluguel.php?id=<?= $carro['id']; ?>" class="btn btn-primary btn-sm">Alugar</a>
+                  <a href="../view/TelaEditarCarro.php?id=<?= $carro['id']; ?>" class="btn btn-success btn-sm">Editar</a>
+                  <form action="../controller/Carro/ExcluirCarro.php" method="POST" class="d-inline">
+                    <button type="submit" name="delete_carro" value="<?= $carro['id']; ?>" class="btn btn-danger btn-sm">Deletar</button>
                 </td>
               </tr>
           <?php

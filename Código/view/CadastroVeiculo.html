@@ -69,7 +69,11 @@
       style="width: 100vw; height: 90vh; margin: 0"
     >
       <div style="width: 520px">
-        <form autocomplete="off">
+        <form
+          action="../controller/Carro/CadastroCarro.php"
+          method="post"
+          autocomplete="off"
+        >
           <input
             class="form-control"
             type="text"
@@ -83,10 +87,11 @@
               margin: 10px;
             "
             placeholder="Nome"
-            name="cNome"
+            name="nomeVeiculo"
             required=""
           /><input
             class="form-control"
+            data-mask="AAA-0000"
             type="text"
             style="
               width: 500px;
@@ -98,11 +103,12 @@
               margin: 10px;
             "
             placeholder="Placa"
-            name="cPlaca"
+            name="placa"
+            pattern="[A-Z]{3}[-][0-9]{4}"
+            title="ABC-1234"
             required=""
-          /><input
-            class="form-control"
-            type="text"
+          /><select
+            class="form-select"
             style="
               width: 500px;
               height: 54px;
@@ -113,8 +119,14 @@
               margin: 10px;
             "
             placeholder="Combustivel"
-            name="cCombustivel"
-            required=""
+            name="combustivel"
+            required
+          >
+            <option value="Diesel">Diesel</option>
+            <option value="Gasolina">Gasolina</option>
+            <option value="Etanol">Etanol</option>
+            <option value="Flex">Flex</option>
+            <option value="Eletrico">Eletrico</option>
           /><input
             class="form-control"
             type="text"
@@ -128,7 +140,7 @@
               margin: 10px;
             "
             placeholder="Cor"
-            name="cCor"
+            name="cor"
             required=""
           /><input
             class="form-control"
@@ -143,7 +155,7 @@
               margin: 10px;
             "
             placeholder="Ano"
-            name="cAno"
+            name="ano"
             min="1985"
             max="2025"
             required=""
@@ -160,7 +172,8 @@
               margin: 10px;
             "
             placeholder="Valor"
-            name="cValor"
+            name="valor"
+            step="0.01"
             required=""
           />
           <div class="d-flex">
@@ -205,5 +218,7 @@
       <img src="../assets/img/jeep.png" style="width: 400px" />
     </div>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
   </body>
 </html>
