@@ -1,9 +1,9 @@
 <?php
-include_once "../persitance/conexao.php";
-include_once "../model/cliente.php";
-include_once "../persitance/clienteDAO.php";
 
-$id = $_POST['id'];
+include_once "../../persitance/conexao.php";
+include_once "../../model/cliente.php";
+include_once "../../persitance/clienteDAO.php";
+
 $nome = $_POST['nome'];
 $cpf = $_POST['cpf'];
 $cnh = $_POST['cnh'];
@@ -16,4 +16,6 @@ $conexao = $conexao->getConexao();
 $cliente = new Cliente($nome, $cpf, $cnh, $telefone, $email);
 
 $clientedao = new ClienteDAO();
-$res = $clientedao->editarCliente($cliente, $id, $conexao);
+$clientedao->salvarCliente($cliente, $conexao);
+
+?>

@@ -3,8 +3,7 @@
 class ClienteDAO
 {
     function __construct()
-    {
-    }
+    {}
 
     /* Função de cadastrar um cliente */
     function salvarCliente($cliente, $conn)
@@ -20,11 +19,17 @@ class ClienteDAO
                 '" . $cliente->getCNH() . "',
                 '" . $cliente->getTelefone() . "',
                 '" . $cliente->getEmail() . "')");
+            mysqli_query($conn, "INSERT INTO clienteDados(nome, cpf, cnh, telefone, email) VALUES (
+                '" . $cliente->getNome() . "',
+                '" . $cliente->getCPF() . "',
+                '" . $cliente->getCNH() . "',
+                '" . $cliente->getTelefone() . "',
+                '" . $cliente->getEmail() . "')");   
             echo '<script>alert("Cadastrado com sucesso");
-                window.location.href = "../view/TelaCliente.html"</script>';
+                window.location.href = "../../view/ListaCliente.php"</script>';
         } else {
             echo '<script>alert("CPF já existente no sistema");
-            window.location.href = "../view/CadastroCliente.html"</script>';
+            window.location.href = "../../view/CadastroCliente.html"</script>';
         }
     }
 
@@ -41,13 +46,23 @@ class ClienteDAO
     /* Função de excluir um cliente */
     function excluirCliente($id, $conn)
     {
-        $sql = "DELETE FROM cliente where id=" . $id;
-        if ($conn->query($sql) === true) {
-            echo '<script>alert("Deletado com sucesso");
-            window.location.href = "../view/ListaCliente.php"</script>';
+        $busca = mysqli_query($conn, "SELECT * FROM aluguel WHERE idCliente='$id'");
+        $count = mysqli_num_rows($busca);
+        if($count >= 1){
+            $busca = mysqli_query($conn, "SELECT * FROM aluguel WHERE idCliente='$id' AND alugado = true");
+            $count = mysqli_num_rows($busca);
+            if($count == 0){
+                mysqli_query($conn, "DELETE FROM cliente where id='$id'");
+                echo '<script>alert("Deletado com sucesso");
+                window.location.href = "../../view/ListaCliente.php"</script>';
+            } else {
+                echo '<script>alert("Cliente com aluguel em andamento");
+                window.location.href = "../../view/ListaCliente.php"</script>';
+            }
         } else {
-            echo '<script>alert("Erro ao deletar");
-            window.location.href = "../view/ListaCliente.php"</script>';
+            mysqli_query($conn, "DELETE FROM cliente where id='$id'");
+            echo '<script>alert("Deletado com sucesso");
+            window.location.href = "../../view/ListaCliente.php"</script>';
         }
     }
 
@@ -63,27 +78,28 @@ class ClienteDAO
 
         if ($count === 1){
             $sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ";
+            mysqli_query($conn, "UPDATE clienteDados SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ");
             if ($conn->query($sql) === true) {
                 echo '<script>alert("Editado com sucesso");
-                window.location.href = "../view/ListaCliente.php"</script>';
+                window.location.href = "../../view/ListaCliente.php"</script>';
             }
         } else if($count === 0) {
             $busca = mysqli_query($conn, "SELECT * FROM cliente WHERE cpf='$cpf'");
             $count = mysqli_num_rows($busca);
             if($count == 0){
                 $sql = "UPDATE cliente SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ";
-
+                mysqli_query($conn, "UPDATE clienteDados SET nome='$nome', cpf='$cpf', cnh='$cnh', telefone='$telefone', email='$email' WHERE id='$id' ");
                 if ($conn->query($sql) === true) {
                 echo '<script>alert("Editado com sucesso");
-                window.location.href = "../view/ListaCliente.php"</script>';
+                window.location.href = "../../view/ListaCliente.php"</script>';
                 }
             } else {
                 echo '<script>alert("CPF ja existente");
-                window.location.href = "../view/ListaCliente.php"</script>';
+                window.location.href = "../../view/ListaCliente.php"</script>';
             }
         } else {
             echo '<script>alert("Erro ao editar");
-            window.location.href = "../view/ListaCliente.php"</script>';
+            window.location.href = "../../view/ListaCliente.php"</script>';
         }
 
     }
