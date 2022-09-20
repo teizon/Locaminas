@@ -1,4 +1,2 @@
-*.txt
-*.jpeg
-*.lock
 *node_modules
+*vendor

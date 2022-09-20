@@ -25,11 +25,13 @@ class CarroDAO
                 '" . $carro->getCor() . "',
                 '" . $carro->getAno() . "',
                 '" . $carro->getValor() . "')");
-            echo '<script>alert("Cadastrado com sucesso");
+                echo '<script>alert("Cadastrado com sucesso");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
+                return true;
         } else {
             echo '<script>alert("Placa já existente no sistema");
             window.location.href = "../../view/CadastroVeiculo.html"</script>';
+            return false;
         }
     }
 
@@ -54,14 +56,17 @@ class CarroDAO
                 mysqli_query($conn ,"DELETE FROM carro where id='$id'");
                 echo '<script>alert("Deletado com sucesso");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
+                return true;
             } else {
                 echo '<script>alert("Carro atualmente em aluguel");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
+                return false;
             }
         } else {
             mysqli_query($conn ,"DELETE FROM carro where id='$id'");
-            echo '<script>alert("Deletado com sucesso");
+            echo '<script>alert("Erro ao deletar");
             window.location.href = "../../view/ListaVeiculo.php"</script>';
+            return true;
         }
     }
 
@@ -82,7 +87,9 @@ class CarroDAO
             if ($conn->query($sql) === true) {
                 echo '<script>alert("Editado com sucesso");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
+                return true;
             }
+            return false;
         } else if($count === 0) {
             $busca = mysqli_query($conn, "SELECT * FROM carro WHERE placa='$placa'");
             $count = mysqli_num_rows($busca);
@@ -90,16 +97,20 @@ class CarroDAO
                 $sql = "UPDATE carro SET nomeVeiculo='$nomeVeiculo', placa='$placa', combustivel='$combustivel', cor='$cor', ano='$ano', valor='$valor' WHERE id='$id' ";
                 mysqli_query($conn, "UPDATE carroDados SET nomeVeiculo='$nomeVeiculo', placa='$placa', combustivel='$combustivel', cor='$cor', ano='$ano', valor='$valor' WHERE id='$id' ");
                 if ($conn->query($sql) === true) {
-                echo '<script>alert("Editado com sucesso");
-                window.location.href = "../../view/ListaVeiculo.php"</script>';
+                    echo '<script>alert("Editado com sucesso");
+                    window.location.href = "../../view/ListaVeiculo.php"</script>';
+                    return true;
                 }
+                return false;
             } else {
                 echo '<script>alert("Placa ja existente");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
+                return false;
             }
         } else {
             echo '<script>alert("Erro ao editar");
-                window.location.href = "../../view/ListaVeiculo.php"</script>';
+            window.location.href = "../../view/ListaVeiculo.php"</script>';
+            return false;
         }
 
     }
