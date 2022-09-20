@@ -61,7 +61,7 @@ class ClienteDAO
             }
         } else {
             mysqli_query($conn, "DELETE FROM cliente where id='$id'");
-            echo '<script>alert("Erro ao deletar");
+            echo '<script>alert("Deletado com sucesso");
             window.location.href = "../../view/ListaCliente.php"</script>';
         }
     }

@@ -64,7 +64,7 @@ class CarroDAO
             }
         } else {
             mysqli_query($conn ,"DELETE FROM carro where id='$id'");
-            echo '<script>alert("Erro ao deletar");
+            echo '<script>alert("Deletado com sucesso");
             window.location.href = "../../view/ListaVeiculo.php"</script>';
             return true;
         }
