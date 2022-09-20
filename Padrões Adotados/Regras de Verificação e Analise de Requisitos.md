@@ -22,7 +22,7 @@
 - GERALMENTE
 - Palavras que forneçam a mesma ideia das anteriores
 
-3. Evite frases grandes.
+3. Evite frases grandes maiores de 65 caracteres
 
 - CORRETO: O software DEVE permitir o registro de clientes da empresa
 - INCORRETO: O software DEVE permitir o registro de clientes que frequentam nossa empresa constantemente.
