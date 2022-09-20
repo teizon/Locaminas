@@ -97,13 +97,13 @@ class CarroDAO
                 $sql = "UPDATE carro SET nomeVeiculo='$nomeVeiculo', placa='$placa', combustivel='$combustivel', cor='$cor', ano='$ano', valor='$valor' WHERE id='$id' ";
                 mysqli_query($conn, "UPDATE carroDados SET nomeVeiculo='$nomeVeiculo', placa='$placa', combustivel='$combustivel', cor='$cor', ano='$ano', valor='$valor' WHERE id='$id' ");
                 if ($conn->query($sql) === true) {
-                    echo '<script>alert("Editado com sucesso");
+                    echo '<script>alert("Carro editado com sucesso");
                     window.location.href = "../../view/ListaVeiculo.php"</script>';
                     return true;
                 }
                 return false;
             } else {
-                echo '<script>alert("Placa ja existente");
+                echo '<script>alert("Placa já existente no sistema");
                 window.location.href = "../../view/ListaVeiculo.php"</script>';
                 return false;
             }

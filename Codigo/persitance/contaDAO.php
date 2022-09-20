@@ -14,7 +14,7 @@ class ContaDAO{
             echo '<script>
             window.location.href = "../../view/home.html"</script>';
         } else {
-            echo '<script>alert("Usuario ou senha incorreto");
+            echo '<script>alert("Email ou senha incorreta");
                 window.location.href = "../../index.html"</script>';
         }
     }

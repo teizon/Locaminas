@@ -94,7 +94,7 @@ class ClienteDAO
                 window.location.href = "../../view/ListaCliente.php"</script>';
                 }
             } else {
-                echo '<script>alert("CPF ja existente");
+                echo '<script>alert("CPF já existente no sistema");
                 window.location.href = "../../view/ListaCliente.php"</script>';
             }
         } else {

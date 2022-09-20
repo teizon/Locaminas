@@ -70,7 +70,7 @@ class AluguelDAO{
             echo '<script>alert("Deletado com sucesso");
             window.location.href = "../../view/ListaAluguel.php"</script>';
         } else {
-            echo '<script>alert("Carro atualmente em aluguel");
+            echo '<script>alert("Aluguel ainda em andamento");
             window.location.href = "../../view/ListaAluguel.php"</script>';
         }
     }

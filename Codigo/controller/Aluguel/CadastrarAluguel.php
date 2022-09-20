@@ -18,7 +18,7 @@ if($idCliente != -1){
     $aluguel = new Aluguel($idCarro, $idCliente, $prazo);
     $alugueldao->cadastrarAluguel($aluguel, $conexao);
 } else {
-    echo '<script>alert("CPF não existe");
+    echo '<script>alert("Não existe cliente com CPF informado");
     window.location.href = "../../view/ListaVeiculo.php"</script>';
 }
 
